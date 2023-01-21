@@ -3,6 +3,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class Checkpoint {
@@ -31,7 +33,26 @@ public class Checkpoint {
 		 */
 		
 		
+		ArrayList<CarMPGEntry> ray = readCarMPGEntryDataFromFile();
+		Stream<CarMPGEntry> stre = ray.stream();
+		
+		//stre.sorted((i,j) -> i.carName.compareTo(j.carName)).forEach((i) -> System.out.println(i.carName));
+		//stre.forEach((i) -> System.out.println(i.mpg));
+		//stre.forEach((i)-> {
+		//if(!(i.cylinders==8)) {
+		//System.out.println(i.cylinders);
+		//}
+		//});
+		//stre.sorted((i,j) -> i.carName.compareTo(j.carName)).forEach((i) -> {
+			//if(i.carName.contains("toyota")) {
+			//System.out.println(i.carName);
+			//}
+		//});
 	}
+		
+		    
+		
+	
 	
 	public static ArrayList<CarMPGEntry> readCarMPGEntryDataFromFile(){
 		ArrayList<CarMPGEntry> carList = new ArrayList<CarMPGEntry>();
@@ -80,7 +101,7 @@ public class Checkpoint {
 				cmpg.origin = Integer.parseInt(splitEntry.get(7));
 				cmpg.carName = splitEntry.get(8);
 				carList.add(cmpg);
-
+				 
 				line = br.readLine();
 			}
 			
